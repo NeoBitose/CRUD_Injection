@@ -64,6 +64,12 @@ class PortofolioController{
 
   public static function delete(){
     global $url;
+    $data = PortofolioModel::detail($_GET["id"]);
+    if ($data->gambar_porto != null) {
+      if (file_exists('C:\laragon\www\CRUD_Injection\views\asset\img/'.$data->gambar_porto)) {
+        unlink('C:\laragon\www\CRUD_Injection\views\asset\img/'.$data->gambar_porto);
+      } 
+    }
     $data = PortofolioModel::delete($_GET["id"]);
     header("Location:".$url."/views/user/portofolio.php");
   }
