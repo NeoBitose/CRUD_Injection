@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/porthub/views/asset/css/style.css">
-  <title>PortHub | Portofolio</title>
+  <link rel="stylesheet" href="/CRUD_Injection/views/asset/css/style.css">
+  <title>CRUD_Injection | Portofolio</title>
 </head>
 
 <body>
@@ -29,8 +29,7 @@
               <hr>
             </div>
             <div class="body-card">
-              <form action="/porthub/app/controllers/PortofolioController.php?action=update" method="POST" class="form">
-
+              <form action="/CRUD_Injection/app/controllers/PortofolioController.php?action=update" method="POST" class="form">
                 <label for="judul">Judul Portofolio</label>
                 <input class="input" name="judul" id="judul" type="text" value="<?= $data->nama_porto ?>">
                 <label for="deskripsi">Deskripsi Portofolio</label>
@@ -40,6 +39,10 @@
                 <label for="tanggal">Tanggal Upload</label>
                 <input class="input" name="tanggal" id="tanggal" type="date" value="<?= $data->tgl_upload ?>">
                 <input type="hidden" name="id" value="<?= $data->id_porto ?>">
+                <label for="gambar">Gambar Upload</label>
+                <input class="input" name="gambar" id="gambar" type="file">
+                <p>Preview gambar : </p>
+                <img id="img-preview" width="150" src="#" alt="">
                 <br>
                 <button class="button-submit" type="submit">Kirim</button>
               </form>
@@ -50,6 +53,20 @@
       </div>
     </div>
   </div>
+  <script>
+    const input_gambar = document.querySelector('#gambar')
+    const preview = document.querySelector('#img-preview')
+
+    input_gambar.addEventListener('change', () => {
+      if (input_gambar.files && input_gambar.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          preview.src = e.target.result;
+        }
+        reader.readAsDataURL(input_gambar.files[0]);
+      }
+    })
+  </script>
 </body>
 
 </html>

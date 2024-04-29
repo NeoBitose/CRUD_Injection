@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/porthub/views/asset/css/style.css">
-  <title>PortHub | Portofolio</title>
+  <link rel="stylesheet" href="/CRUD_Injection/views/asset/css/style.css">
+  <title>CRUD_Injection | Portofolio</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <hr>
               </div>
               <div class="body-card">
-                <a href="/porthub/views/user/create.php">
+                <a href="/CRUD_Injection/views/user/create.php">
                   <button class="create-btn">Tambah Data</button>
                 </a>
                 <table class="table" cellspacing="0">
@@ -38,6 +38,7 @@
                     <th>Judul Portofolio</th>
                     <th>Link</th>
                     <th>Tanggal Upload</th>
+                    <th>Gambar</th>
                     <th>Nama Pengguna</th>
                     <th>Aksi</th>
                   </tr>
@@ -49,13 +50,14 @@
                     <td><?= $data[$i]['nama_porto']; ?></td>
                     <td><a href="<?= $data[$i]['link_porto']; ?>"><?= $data[$i]['link_porto']; ?></a></td>
                     <td><?= $data[$i]['tgl_upload']; ?></td>
+                    <td><img src="/CRUD_Injection/views/asset/img/<?= $data[$i]['gambar_porto']; ?>" alt="" width="150"></td>
                     <td><?= $data[$i]['username']; ?></td>
                     <td>
                       <div class="grup-action-btn">
-                        <a href="/porthub/views/user/update.php?id=<?= $data[$i]['id_porto']?>">
+                        <a href="/CRUD_Injection/views/user/update.php?id=<?= $data[$i]['id_porto']?>">
                           <button class="edit-btn">Edit</button>
                         </a>
-                        <a href="/porthub/app/controllers/PortofolioController.php?action=delete&id=<?= $data[$i]['id_porto']?>" onclick="return confirm('Are you sure you want to delete this item?');">
+                        <a href="/CRUD_Injection/app/controllers/PortofolioController.php?action=delete&id=<?= $data[$i]['id_porto']?>" onclick="return confirm('Anda yakin menghapus data ini?');">
                           <button class="delete-btn">Hapus</button>
                         </a>
                       </div>
@@ -73,6 +75,45 @@
       </div>
     </div>
   </div>
+  <script>
+    // var delete_link = document.getElementById('delete-link');
+    // $('.delete-btn').click(function(e) {
+    //   e.preventDefault();
+    //   Swal.fire({
+    //     title: 'Apakah anda yakin menghapus data ini ?',
+    //     text: '',
+    //     icon: 'warning',
+    //     showConfirmButton: true,
+    //     showCancelButton: true,
+    //     confirmButtonText: 'Ya',
+    //     cancelButtonText: 'Tidak'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       console.log('ok');
+    //       window.location.href = delete_link.href;
+    //     }
+    //   })
+    // });
+    // $('.delete-btn').click(function(e) {
+    // e.preventDefault();
+    // var delete_link = $(this).closest('.delete-link').attr('href'); // Ambil URL dari tautan terdekat
+    // Swal.fire({
+    //   title: 'Apakah anda yakin menghapus data ini ?',
+    //   text: '',
+    //   icon: 'warning',
+    //   showConfirmButton: true,
+    //   showCancelButton: true,
+    //   confirmButtonText: 'Ya',
+    //   cancelButtonText: 'Tidak'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     console.log('ok');
+    //     window.location.href = delete_link; // Arahkan ke URL delete_link setelah konfirmasi
+    //   }
+    // });
+  // });
+
+  </script>
 </body>
 
 </html>

@@ -17,11 +17,11 @@ class PortofolioModel{
     return $data;
   }
 
-  static function create($nama, $deskripsi, $link, $tgl, $id=2){
+  static function create($nama, $deskripsi, $link, $tgl, $gambar, $id=2){
     global $conn;
-    $query = "insert into portofolio (nama_porto, deskripsi_porto, link_porto, tgl_upload, user_id) values (?,?,?,?,?)";
+    $query = "insert into portofolio (nama_porto, deskripsi_porto, link_porto, tgl_upload, gambar_porto, user_id) values (?,?,?,?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssssi", $nama, $deskripsi, $link, $tgl, $id);
+    $stmt->bind_param("sssssi", $nama, $deskripsi, $link, $tgl, $gambar, $id);
     $stmt->execute();
     $result = $stmt->affected_rows > 0 ? true : false;
     $stmt->close();

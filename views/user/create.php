@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/porthub/views/asset/css/style.css">
-  <title>PortHub | Portofolio</title>
+  <link rel="stylesheet" href="/CRUD_Injection/views/asset/css/style.css">
+  <title>CRUD_Injection | Portofolio</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
               <hr>
             </div>
             <div class="body-card">
-              <form action="/porthub/app/controllers/PortofolioController.php?action=create" method="POST" class="form">
+              <form action="/CRUD_Injection/app/controllers/PortofolioController.php?action=create" method="POST" class="form" enctype="multipart/form-data">
                 <label for="judul">Judul Portofolio</label>
                 <input class="input" name="judul" id="judul" type="text">
                 <label for="deskripsi">Deskripsi Portofolio</label>
@@ -34,6 +34,8 @@
                 <input class="input" name="link" id="link" type="text">
                 <label for="tanggal">Tanggal Upload</label>
                 <input class="input" name="tanggal" id="tanggal" type="date">
+                <label for="gambar">Gambar Upload</label>
+                <input class="input" name="gambar" id="gambar" type="file">
                 <br>
                 <button class="button-submit" type="submit">Kirim</button>
               </form>

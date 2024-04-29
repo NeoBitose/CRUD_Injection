@@ -193,6 +193,24 @@ label{
   width: 60%;
   padding: 10px;
 }
+input[type="file" i] {
+  width: 60%;
+  padding: 10px;
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  text-align: start !important;
+  border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  white-space: pre;
+  overflow: hidden !important;
+  border-radius: initial;
+}
+.form p {
+  margin-top: 10px;
+}
 .button-submit{
   width: 110px;
   height: 40px;
