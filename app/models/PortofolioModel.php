@@ -41,14 +41,24 @@ class PortofolioModel{
     return $data;
   }
 
-  static function update($id, $nama, $deskripsi, $link, $tgl){
+  static function update($id, $nama, $deskripsi, $link, $tgl, $file){
     global $conn;
-    $stmt = $conn->prepare("update portofolio set nama_porto=?, deskripsi_porto=?, link_porto=?, tgl_upload=? WHERE id_porto=".$id);
-    $stmt->bind_param("ssss", $nama, $deskripsi, $link, $tgl);
-    $stmt->execute();
-    $result = $stmt->affected_rows > 0 ? true : false;
-    $stmt->close();
-    return $result;
+    if ($file != null) {
+      $stmt = $conn->prepare("update portofolio set nama_porto=?, deskripsi_porto=?, link_porto=?, tgl_upload=?, gambar_porto=? WHERE id_porto=".$id);
+      $stmt->bind_param("sssss", $nama, $deskripsi, $link, $tgl, $file);
+      $stmt->execute();
+      $result = $stmt->affected_rows > 0 ? true : false;
+      $stmt->close();
+      return $result;
+    } 
+    else {
+      $stmt = $conn->prepare("update portofolio set nama_porto=?, deskripsi_porto=?, link_porto=?, tgl_upload=? WHERE id_porto=".$id);
+      $stmt->bind_param("ssss", $nama, $deskripsi, $link, $tgl);
+      $stmt->execute();
+      $result = $stmt->affected_rows > 0 ? true : false;
+      $stmt->close();
+      return $result;
+    }
   }
 
   static function delete($id){

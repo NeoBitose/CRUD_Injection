@@ -29,7 +29,7 @@
               <hr>
             </div>
             <div class="body-card">
-              <form action="/CRUD_Injection/app/controllers/PortofolioController.php?action=update" method="POST" class="form">
+              <form action="/CRUD_Injection/app/controllers/PortofolioController.php?action=update" method="POST" class="form" enctype="multipart/form-data">
                 <label for="judul">Judul Portofolio</label>
                 <input class="input" name="judul" id="judul" type="text" value="<?= $data->nama_porto ?>">
                 <label for="deskripsi">Deskripsi Portofolio</label>
