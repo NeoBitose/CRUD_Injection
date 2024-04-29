@@ -44,31 +44,21 @@ class PortofolioModel{
   static function update($id, $nama, $deskripsi, $link, $tgl, $file){
     global $conn;
     if ($file != null) {
-      $stmt = $conn->prepare("update portofolio set nama_porto=?, deskripsi_porto=?, link_porto=?, tgl_upload=?, gambar_porto=? WHERE id_porto=".$id);
-      $stmt->bind_param("sssss", $nama, $deskripsi, $link, $tgl, $file);
-      $stmt->execute();
-      $result = $stmt->affected_rows > 0 ? true : false;
-      $stmt->close();
+      $query = "update portofolio set nama_porto='.$nama.', deskripsi_porto='.$deskripsi.', link_porto='.$link.', tgl_upload='.$tgl.', gambar_porto='.$file.' where id_porto=".$id;
+      $result = $conn->query($query);
       return $result;
     } 
     else {
-      $stmt = $conn->prepare("update portofolio set nama_porto=?, deskripsi_porto=?, link_porto=?, tgl_upload=? WHERE id_porto=".$id);
-      $stmt->bind_param("ssss", $nama, $deskripsi, $link, $tgl);
-      $stmt->execute();
-      $result = $stmt->affected_rows > 0 ? true : false;
-      $stmt->close();
+      $query = "update portofolio set nama_porto='.$nama.', deskripsi_porto='.$deskripsi.', link_porto='.$link.', tgl_upload='.$tgl.' where id_porto=".$id;
+      $result = $conn->query($query);
       return $result;
     }
   }
 
   static function delete($id){
     global $conn;
-    $query = "delete from portofolio where id_porto=?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->affected_rows > 0 ? true : false;
-    $stmt->close();
+    $query = "delete from portofolio where id_porto=".$id;
+    $result = $conn->query($query);
     return $result;
   }
 }
